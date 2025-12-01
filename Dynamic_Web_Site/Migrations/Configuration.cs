@@ -17,18 +17,15 @@ namespace Dynamic_Web_Site.Migrations
 
         protected override void Seed(BKDBContext context)
         {
-            // Default Admin Oluştur
-            if (!context.Admin.Any())
+            var defaultAdmin = new Admin
             {
-                var defaultAdmin = new Admin
-                {
-                    ADM_Eposta = "admin@admin.com",
-                    ADM_Password = Crypto.Hash("admin123", "MD5"),
-                    ADM_Yetki = "Admin"
-                };
-                context.Admin.Add(defaultAdmin);
-                context.SaveChanges();
-            }
+                ADM_Eposta = "admin@admin.com",
+                ADM_Password = Crypto.Hash("admin123", "MD5"),
+                ADM_Yetki = "Admin"
+            };
+
+            context.Admin.AddOrUpdate(a => a.ADM_Eposta, defaultAdmin);
+            context.SaveChanges();
         }
     }
 }
