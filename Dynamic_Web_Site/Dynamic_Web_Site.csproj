@@ -13,8 +13,8 @@
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BilgiKodKurumsalWeb</RootNamespace>
-    <AssemblyName>BilgiKodKurumsalWeb</AssemblyName>
+    <RootNamespace>Dynamic_Web_Site</RootNamespace>
+    <AssemblyName>Dynamic_Web_Site</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
@@ -300,7 +300,9 @@
     <Content Include="Content\AdminLayout\assets\ckeditor\plugins\a11yhelp\dialogs\lang\ru.js" />
     <Content Include="Content\AdminLayout\assets\ckeditor\plugins\a11yhelp\dialogs\lang\sk.js" />
     <Content Include="Content\AdminLayout\assets\ckeditor\plugins\a11yhelp\dialogs\lang\sl.js" />
+    <Content Include="Content\AdminLayout\assets\ckeditor\plugins\a11yhelp\dialogs\lang\sr.js" />
     <Content Include="Content\AdminLayout\assets\ckeditor\plugins\a11yhelp\dialogs\lang\sv.js" />
+    <Content Include="Content\AdminLayout\assets\ckeditor\plugins\a11yhelp\dialogs\lang\th.js" />
     <Content Include="Content\AdminLayout\assets\ckeditor\plugins\a11yhelp\dialogs\lang\tr.js" />
     <Content Include="Content\AdminLayout\assets\ckeditor\plugins\a11yhelp\dialogs\lang\ug.js" />
     <Content Include="Content\AdminLayout\assets\ckeditor\plugins\a11yhelp\dialogs\lang\uk.js" />
@@ -333,22 +335,36 @@
     <Content Include="Content\AdminLayout\assets\ckeditor\plugins\specialchar\dialogs\lang\fa.js" />
     <Content Include="Content\AdminLayout\assets\ckeditor\plugins\specialchar\dialogs\lang\fi.js" />
     <Content Include="Content\AdminLayout\assets\ckeditor\plugins\specialchar\dialogs\lang\fr.js" />
+    <Content Include="Content\AdminLayout\assets\ckeditor\plugins\specialchar\dialogs\lang\gu.js" />
     <Content Include="Content\AdminLayout\assets\ckeditor\plugins\specialchar\dialogs\lang\he.js" />
+    <Content Include="Content\AdminLayout\assets\ckeditor\plugins\specialchar\dialogs\lang\hi.js" />
     <Content Include="Content\AdminLayout\assets\ckeditor\plugins\specialchar\dialogs\lang\hr.js" />
+    <Content Include="Content\AdminLayout\assets\ckeditor\plugins\specialchar\dialogs\lang\hu.js" />
     <Content Include="Content\AdminLayout\assets\ckeditor\plugins\specialchar\dialogs\lang\it.js" />
     <Content Include="Content\AdminLayout\assets\ckeditor\plugins\specialchar\dialogs\lang\ku.js" />
+    <Content Include="Content\AdminLayout\assets\ckeditor\plugins\specialchar\dialogs\lang\lt.js" />
     <Content Include="Content\AdminLayout\assets\ckeditor\plugins\specialchar\dialogs\lang\lv.js" />
     <Content Include="Content\AdminLayout\assets\ckeditor\plugins\specialchar\dialogs\lang\nb.js" />
     <Content Include="Content\AdminLayout\assets\ckeditor\plugins\specialchar\dialogs\lang\nl.js" />
     <Content Include="Content\AdminLayout\assets\ckeditor\plugins\specialchar\dialogs\lang\no.js" />
     <Content Include="Content\AdminLayout\assets\ckeditor\plugins\specialchar\dialogs\lang\pt-br.js" />
+    <Content Include="Content\AdminLayout\assets\ckeditor\plugins\specialchar\dialogs\lang\pt.js" />
+    <Content Include="Content\AdminLayout\assets\ckeditor\plugins\specialchar\dialogs\lang\ro.js" />
+    <Content Include="Content\AdminLayout\assets\ckeditor\plugins\specialchar\dialogs\lang\ru.js" />
     <Content Include="Content\AdminLayout\assets\ckeditor\plugins\specialchar\dialogs\lang\sk.js" />
+    <Content Include="Content\AdminLayout\assets\ckeditor\plugins\specialchar\dialogs\lang\sl.js" />
+    <Content Include="Content\AdminLayout\assets\ckeditor\plugins\specialchar\dialogs\lang\sr.js" />
     <Content Include="Content\AdminLayout\assets\ckeditor\plugins\specialchar\dialogs\lang\sv.js" />
+    <Content Include="Content\AdminLayout\assets\ckeditor\plugins\specialchar\dialogs\lang\th.js" />
     <Content Include="Content\AdminLayout\assets\ckeditor\plugins\specialchar\dialogs\lang\tr.js" />
     <Content Include="Content\AdminLayout\assets\ckeditor\plugins\specialchar\dialogs\lang\ug.js" />
+    <Content Include="Content\AdminLayout\assets\ckeditor\plugins\specialchar\dialogs\lang\uk.js" />
+    <Content Include="Content\AdminLayout\assets\ckeditor\plugins\specialchar\dialogs\lang\vi.js" />
     <Content Include="Content\AdminLayout\assets\ckeditor\plugins\specialchar\dialogs\lang\zh-cn.js" />
+    <Content Include="Content\AdminLayout\assets\ckeditor\plugins\specialchar\dialogs\lang\zh.js" />
     <Content Include="Content\AdminLayout\assets\ckeditor\plugins\specialchar\dialogs\lang\_translationstatus.txt" />
     <Content Include="Content\AdminLayout\assets\ckeditor\plugins\specialchar\dialogs\specialchar.js" />
+    <Content Include="Content\AdminLayout\assets\ckeditor\plugins\tableselection\styles\tableselection.css" />
     <Content Include="Content\AdminLayout\assets\ckeditor\plugins\tabletools\dialogs\tableCell.js" />
     <Content Include="Content\AdminLayout\assets\ckeditor\plugins\table\dialogs\table.js" />
     <Content Include="Content\AdminLayout\assets\ckeditor\plugins\wsc\dialogs\ciframe.html" />
@@ -745,41 +761,28 @@
     <Content Include="Content\ckeditor\lang\zh-cn.js" />
     <Content Include="Content\ckeditor\lang\zh.js" />
     <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\a11yhelp.js" />
-    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\af.js" />
     <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\ar.js" />
-    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\az.js" />
     <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\bg.js" />
     <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\ca.js" />
     <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\cs.js" />
     <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\cy.js" />
     <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\da.js" />
-    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\de-ch.js" />
     <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\de.js" />
     <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\el.js" />
-    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\en-au.js" />
-    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\en-gb.js" />
     <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\en.js" />
     <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\eo.js" />
-    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\es-mx.js" />
     <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\es.js" />
     <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\et.js" />
-    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\eu.js" />
     <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\fa.js" />
     <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\fi.js" />
-    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\fo.js" />
-    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\fr-ca.js" />
     <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\fr.js" />
-    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\gl.js" />
     <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\gu.js" />
     <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\he.js" />
     <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\hi.js" />
     <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\hr.js" />
     <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\hu.js" />
-    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\id.js" />
     <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\it.js" />
     <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\ja.js" />
-    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\km.js" />
-    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\ko.js" />
     <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\ku.js" />
     <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\lt.js" />
     <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\lv.js" />
@@ -788,22 +791,17 @@
     <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\nb.js" />
     <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\nl.js" />
     <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\no.js" />
-    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\oc.js" />
     <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\pl.js" />
     <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\pt-br.js" />
     <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\pt.js" />
     <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\ro.js" />
     <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\ru.js" />
-    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\si.js" />
     <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\sk.js" />
     <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\sl.js" />
-    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\sq.js" />
-    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\sr-latn.js" />
     <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\sr.js" />
     <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\sv.js" />
     <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\th.js" />
     <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\tr.js" />
-    <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\tt.js" />
     <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\ug.js" />
     <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\uk.js" />
     <Content Include="Content\ckeditor\plugins\a11yhelp\dialogs\lang\vi.js" />
@@ -857,10 +855,13 @@
     <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\fr-ca.js" />
     <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\fr.js" />
     <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\gl.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\gu.js" />
     <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\he.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\hi.js" />
     <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\hr.js" />
     <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\hu.js" />
     <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\id.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\is.js" />
     <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\it.js" />
     <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\ja.js" />
     <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\km.js" />
@@ -871,20 +872,17 @@
     <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\nb.js" />
     <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\nl.js" />
     <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\no.js" />
-    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\oc.js" />
     <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\pl.js" />
     <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\pt-br.js" />
     <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\pt.js" />
     <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\ro.js" />
     <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\ru.js" />
-    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\si.js" />
     <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\sk.js" />
     <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\sl.js" />
-    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\sq.js" />
+    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\sr.js" />
     <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\sv.js" />
     <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\th.js" />
     <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\tr.js" />
-    <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\tt.js" />
     <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\ug.js" />
     <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\uk.js" />
     <Content Include="Content\ckeditor\plugins\specialchar\dialogs\lang\vi.js" />
@@ -895,7 +893,6 @@
     <Content Include="Content\ckeditor\plugins\tableselection\styles\tableselection.css" />
     <Content Include="Content\ckeditor\plugins\tabletools\dialogs\tableCell.js" />
     <Content Include="Content\ckeditor\plugins\table\dialogs\table.js" />
-    <Content Include="Content\ckeditor\plugins\widget\images\handle.png" />
     <Content Include="Content\ckeditor\plugins\wsc\dialogs\ciframe.html" />
     <Content Include="Content\ckeditor\plugins\wsc\dialogs\tmpFrameset.html" />
     <Content Include="Content\ckeditor\plugins\wsc\dialogs\wsc.css" />

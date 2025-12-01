@@ -1,31 +1,34 @@
 namespace Dynamic_Web_Site.Migrations
 {
+    using Dynamic_Web_Site.Models.DataContext;
+    using Dynamic_Web_Site.Models.Model;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
+    using System.Web.Helpers;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<Dynamic_Web_Site.Models.DataContext.BKDBContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<BKDBContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
         }
 
-        protected override void Seed(Dynamic_Web_Site.Models.DataContext.BKDBContext context)
+        protected override void Seed(BKDBContext context)
         {
-            //  This method will be called after migrating to the latest version.
-
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data. E.g.
-            //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
-            //
+            // Default Admin Oluştur
+            if (!context.Admin.Any())
+            {
+                var defaultAdmin = new Admin
+                {
+                    ADM_Eposta = "admin@admin.com",
+                    ADM_Password = Crypto.Hash("admin123", "MD5"),
+                    ADM_Yetki = "Admin"
+                };
+                context.Admin.Add(defaultAdmin);
+                context.SaveChanges();
+            }
         }
     }
 }

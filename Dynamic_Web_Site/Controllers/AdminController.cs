@@ -25,20 +25,31 @@ namespace Dynamic_Web_Site.Controllers
         [Route("yonetim/giris")]
         public ActionResult Login()
         {
+            if (!db.Admin.Any())
+            {
+                ViewBag.Uyari = "Sistem henüz kurulmamış. İlk admin hesabını oluşturunuz.";
+            }
             return View();
         }
-        [HttpPost]
 
+        [HttpPost]
         public ActionResult Login(Admin admin)
         {
-            var login = db.Admin.Where(x => x.ADM_Eposta == admin.ADM_Eposta).SingleOrDefault();
-            if (login==null)
+            if (admin == null || string.IsNullOrEmpty(admin.ADM_Eposta))
+            {
+                ViewBag.Uyari = "Kullanıcı Adı veya Şifre yanlış";
+                return View(admin ?? new Admin());
+            }
+
+            var login = db.Admin.FirstOrDefault(x => x.ADM_Eposta == admin.ADM_Eposta);
+            if (login == null)
             {
                 ViewBag.Uyari = "Kullanıcı Adı veya Şifre yanlış";
                 return View(admin);
-
             }
-            if (login.ADM_Eposta == admin.ADM_Eposta && login.ADM_Password == Crypto.Hash(admin.ADM_Password, "MD5"))
+
+            if (login.ADM_Eposta == admin.ADM_Eposta && 
+                login.ADM_Password == Crypto.Hash(admin.ADM_Password, "MD5"))
             {
                 Session["adminid"] = login.ADM_Id;
                 Session["eposta"] = login.ADM_Eposta;
@@ -48,7 +59,6 @@ namespace Dynamic_Web_Site.Controllers
 
             ViewBag.Uyari = "Kullanıcı Adı veya Şifre yanlış";
             return View(admin);
-
         }
         [Route("yonetim/cikis")]
         public ActionResult Logout()
