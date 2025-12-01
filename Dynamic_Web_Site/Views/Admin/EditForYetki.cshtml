@@ -1,0 +1,52 @@
+﻿@model Dynamic_Web_Site.Models.Model.Admin
+
+@{
+    ViewBag.Title = "EditForYetki";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>EditForYetki</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Admin</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.ADM_Id)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ADM_Eposta, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.ADM_Eposta, new { htmlAttributes = new { @class = "form-control", } })
+                @Html.HiddenFor(model => model.ADM_Eposta)
+            </div>
+        </div>
+
+
+        @Html.HiddenFor(model => model.ADM_Password)
+        <div class="form-group">
+            @Html.LabelFor(model => model.ADM_Yetki, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.ADM_Yetki, new List<SelectListItem>
+                {
+                    new SelectListItem { Text = "Admin", Value = "Admin", Selected = Model.ADM_Yetki == "Admin" },
+                    new SelectListItem { Text = "Yönetim", Value = "Yönetim", Selected = Model.ADM_Yetki == "Admin" }
+                }, "-Durum Seç-", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ADM_Yetki, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10 text-right">
+                <input type="submit" value="Kaydet" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Geri Dön", "AdminList")
+</div>

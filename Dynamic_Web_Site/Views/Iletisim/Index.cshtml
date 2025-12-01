@@ -1,0 +1,104 @@
+﻿@model IEnumerable<Dynamic_Web_Site.Models.Model.Iletisim>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<style>
+    .limited-cell {
+        max-width: 200px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: inline-block;
+    }
+</style>
+
+@if (!Model.Any())
+{
+    <p>
+        @Html.ActionLink("İletişim Ekle", "Create", null, new { @class = "btn btn-primary" })
+    </p>
+}
+
+<table class="table table-bordered">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ILT_Adres)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ILT_Telefon)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ILT_Fax)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ILT_Whatsapp)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ILT_Facebook)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ILT_Twitter)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ILT_Instagram)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ILT_Eposta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ILT_Konum)
+        </th>
+        <th>İşlemler</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ILT_Adres)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ILT_Telefon)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ILT_Fax)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ILT_Whatsapp)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ILT_Facebook)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ILT_Twitter)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ILT_Instagram)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ILT_Eposta)
+            </td>
+            <td>
+                <span class="limited-cell" title="@item.ILT_Konum">
+                    @item.ILT_Konum
+                </span>
+            </td>
+            <td>
+                <table class="table" style="border:none">
+                    <tr>
+                        <td style="border:none">
+                            @Html.ActionLink("Düzenle", "Edit", new { id = item.ILT_Id }, new { @class = "btn btn-warning" })
+                        </td>
+                        <td style="border:none">
+                            @Html.ActionLink("Sil", "Delete", new { id = item.ILT_Id }, new { @class = "btn btn-danger" })
+                        </td>
+                    </tr>
+                </table>
+
+            </td>
+        </tr>
+    }
+
+</table>

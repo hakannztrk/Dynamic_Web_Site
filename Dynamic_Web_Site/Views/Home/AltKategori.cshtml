@@ -1,0 +1,109 @@
+﻿@model IEnumerable<Dynamic_Web_Site.Models.Model.Urun>
+@{
+    ViewBag.Title = "AltKategori";
+    Layout = "~/Views/Shared/_SiteLayout.cshtml";
+}
+@using Dynamic_Web_Site.Helper;
+<style>
+    .card-img-top {
+        width: 100%;
+        height: 250px; /* Burada istediğiniz yüksekliği belirleyebilirsiniz */
+        object-fit: cover; /* Resmin orantısını bozmadan kutuya sığdırır */
+    }
+</style>
+
+<div class="container-fluid">
+    <div class="row min-vh-100" style="padding-top: 70px;">
+
+        <!-- Kategoriler -->
+
+        <div class="col-md-3 bg-light p-4 border-end">
+            <h3 class="text-center"><a class="text-dark" href="/Urunler">Kategoriler</a></h3>
+            <hr />
+            <ul class="list-group">
+                @foreach (var kategori in Model.Select(m => m.AltKategori.Kategori).Distinct())
+                {
+                    if (kategori.Status == "Open")
+                    {
+                        <li class="list-group-item">
+                            <strong>
+                                <a href="/UrunKategori/@SeoHelper.ToSeoUrl(kategori.KTG_Adi).ToLower()/@kategori.KTG_Id" class="text-decoration-none text-dark">
+                                    @kategori.KTG_Adi.ToUpper()
+                                </a>
+                            </strong>
+
+                            <!-- Alt Kategoriler -->
+                            <ul class="list-unstyled ps-3 mt-2">
+                                @foreach (var altKategori in Model
+                                    .Where(m => m.AltKategori.KTG_Id == kategori.KTG_Id)
+                                    .Select(m => m.AltKategori)
+                                    .Distinct())
+                                {
+                                    if (altKategori.Status == "Open")
+                                    {
+                                        <li>
+                                            <a href="/UrunAltkategori/@SeoHelper.ToSeoUrl(altKategori.AKT_Adi).ToLower()/@altKategori.AKT_Id" class="text-decoration-none text-secondary">
+                                                @altKategori.AKT_Adi
+                                            </a>
+                                        </li>
+                                    }
+                                }
+                            </ul>
+                        </li>
+                    }
+                }
+            </ul>
+        </div>
+
+
+
+        <!-- Ürünler -->
+        <div class="col-md-9 p-4">
+            <h4>Ürünler</h4>
+            <hr />
+            <div class="row">
+                @foreach (var urun in Model)
+                {
+                    if (urun.Status == "Open")
+                    {
+                        <div class="col-md-4 mb-4">
+                            <div class="card h-100">
+                                @if (!string.IsNullOrEmpty(urun.URN_ResimURL))
+                                {
+                                    <img src="@urun.URN_ResimURL" class="card-img-top w-100" style="height: 200px; object-fit: contain; background-color: #f0f0f0;" alt="@urun.URN_UrunAdi">
+
+                                }
+                                <div class="card-body">
+                                    <hr />
+                                    <h5 class="card-title text-center">@urun.URN_UrunAdi.ToUpper()</h5>
+                                    <h6 class="card-subtitle mb-2 text-muted">@urun.URN_Baslik</h6>
+                                    <p class="card-text">
+                                        @if (!string.IsNullOrEmpty(urun.URN_UrunAciklama) && urun.URN_UrunAciklama.Length > 50)
+                                        {
+                                            @urun.URN_UrunAciklama.Substring(0, 50)
+                                        }
+                                        else
+                                        {
+                                            @urun.URN_UrunAciklama
+                                        }
+                                    </p>
+
+                                    <div class="d-flex justify-content-end mt-auto">
+                                        <a href="/Urunler/@SeoHelper.ToSeoUrl(urun.URN_Baslik).ToLower()/@urun.URN_Id" class="btn btn-outline-primary">Ürüne Git</a>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                }
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+
+

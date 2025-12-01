@@ -1,0 +1,76 @@
+﻿
+@{ Layout = null;}
+<!-- ======= Footer ======= -->
+<footer id="footer" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
+
+
+
+    <div class="footer-top">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-3 col-md-6 footer-links">
+                    <h4>Bağlantılar</h4>
+                    <ul>
+                        <li><i class="bx bx-chevron-right"></i> <a href="/Anasayfa">AnaSayfa</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="/Hakkimizda">Hakkımızda</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="/Urunler">Ürünlerimiz</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="/Hizmetlerimiz">Hizmetlerimiz</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="/Iletisims">İletişim</a></li>
+
+
+                    </ul>
+                </div>
+
+                <div class="col-lg-3 col-md-6 footer-links">
+                    <h4>Hizmetlerimiz</h4>
+                    <ul>
+                        @foreach (var item in ViewBag.Hizmet)
+                        {
+                            <li><i class="bx bx-chevron-right"></i> <a href="/Hizmetlerimiz">@item.HZM_Baslik</a></li>
+                        }
+
+
+                    </ul>
+                </div>
+
+
+                @if (ViewBag.Iletisim != null)
+                {
+                    <div class="col-lg-3 col-md-6 footer-contact">
+                        <h4>İletişim</h4>
+                        <p>
+                            @ViewBag.Iletisim.ILT_Adres
+                            <br />
+                            <strong>Telefon No:</strong> @ViewBag.Iletisim.ILT_Telefon<br>
+                            <strong>E-Posta:</strong> @ViewBag.Iletisim.ILT_Eposta<br>
+                        </p>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 footer-info">
+                        <div class="social-links mt-3">
+                            <a href="@ViewBag.Iletisim.ILT_Twitter" class="twitter"><i class="bx bxl-twitter"></i></a>
+                            <a href="@ViewBag.Iletisim.ILT_Facebook" class="facebook"><i class="bx bxl-facebook"></i></a>
+                            <a href="@ViewBag.Iletisim.ILT_Instagram" class="instagram"><i class="bx bxl-instagram"></i></a>
+                        </div>
+                    </div>
+                }
+
+
+            </div>
+        </div>
+    </div>
+
+    <!--<div class="container">
+        <div class="copyright">
+            &copy; Copyright <strong><span>Moderna</span></strong>. All Rights Reserved
+        </div>
+        <div class="credits">-->
+    <!-- All the links in the footer should remain intact. -->
+    <!-- You can delete the links only if you purchased the pro version. -->
+    <!-- Licensing information: https://bootstrapmade.com/license/ -->
+    <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/free-bootstrap-template-corporate-moderna/ -->
+    <!--Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+        </div>
+    </div>-->
+</footer><!-- End Footer -->

@@ -1,0 +1,35 @@
+﻿@model Dynamic_Web_Site.Models.Model.Urun
+
+@{
+    ViewBag.Title = "UrunDetay";
+    Layout = "~/Views/Shared/_SiteLayout.cshtml";
+}
+
+<main id="main">
+    @{
+        Html.RenderAction("KategoriPartial", "Home");
+    }
+    <div class="container py-5">
+        <div class="row" style="padding-top: 70px;">
+            <!-- Sol tarafta büyük resim -->
+            <div class="col-md-6">
+                <img src="@Model.URN_ResimURL" class="img-fluid" alt="@Model.URN_UrunAdi" style="width: 500px; height: 500px; object-fit: cover;">
+            </div>
+
+            <!-- Sağ tarafta ürün özellikleri -->
+            <div class="col-md-6">
+                <h2 class="text-left">@Model.URN_UrunAdi.ToUpper()</h2>
+                <h3>@Model.URN_Baslik</h3>
+                <hr />
+                <p><strong> Ürün Açıklama<br /></strong><hr /> @Html.Raw(Model.URN_UrunAciklama)</p>
+                <hr />
+            </div>
+        </div>
+    </div>
+    @{
+        Html.RenderAction("UrunPartial", "Home", new { id = Model.AKT_Id, urunId = Model.URN_Id });
+    }
+
+
+
+</main>

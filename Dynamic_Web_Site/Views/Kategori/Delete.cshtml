@@ -1,0 +1,46 @@
+﻿@model Dynamic_Web_Site.Models.Model.Kategori
+
+@{
+    ViewBag.Title = "Kategori Kaldır";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<h3>Kategoriyi silmek istediğinizden emin misiniz?</h3>
+<div>
+    <h4>Kategori</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.KTG_Adi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KTG_Adi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KTG_Aciklama)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KTG_Aciklama)
+        </dd>
+
+       
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color text-right">
+            <input type="submit" value="Kategoriyi Sil" class="btn btn-danger" /> 
+          
+        </div>
+        <div>
+            @Html.ActionLink("Geri Dön", "Index")
+        </div>
+    }
+</div>

@@ -1,0 +1,57 @@
+﻿@model Dynamic_Web_Site.Models.Model.Slider
+
+@{
+    ViewBag.Title = "Slider Ekle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+@using (Html.BeginForm("Create", "Slider", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <h4>Slider</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.SLD_Baslik, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.SLD_Baslik, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.SLD_Baslik, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.SLD_Aciklama, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.SLD_Aciklama, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.SLD_Aciklama, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.SLD_ResimURL, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <input type="file" name="SLD_ResimURL" accept=".png,.jpg,.jpeg" class="form-control" />
+
+            @Html.ValidationMessageFor(model => model.SLD_ResimURL, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+    <input type="hidden" name="Status" value="Open" />
+
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10 text-right">
+            <input type="submit" value="Kaydet" class="btn btn-primary" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Geri Dön", "Index")
+</div>

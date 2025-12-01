@@ -1,0 +1,22 @@
+﻿@model Dynamic_Web_Site.Models.Model.Tanitim
+@{
+    Layout = null;
+}
+
+    @if (Model != null && Model.Status == "Open")
+    {
+        <section class="why-us section-bg py-5" data-aos="fade-up" data-aos-delay="200">
+            <div class="container px-4">
+                <div class="row justify-content-center">
+                    <div class="col-lg-10 col-md-12">
+                        <video autoplay muted loop controls class="img-fluid w-100" style="border-radius: 8px;">
+                            <source src="@Model.TNT_Tanitim" type="video/mp4">
+                            Tarayıcınız video etiketini desteklemiyor.
+                        </video>
+                    </div>
+                </div>
+            </div>
+        </section>
+    }
+
+

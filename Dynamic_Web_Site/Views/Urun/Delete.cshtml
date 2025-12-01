@@ -1,0 +1,71 @@
+﻿@model Dynamic_Web_Site.Models.Model.Urun
+
+@{
+    ViewBag.Title = "Ürün Sil";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Ürün Sil</h2>
+
+<h3>Ürünü silmek istediğinize emin misiniz?</h3>
+<div>
+    <h4>Urun</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.AltKategori.AKT_Adi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AltKategori.AKT_Adi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.URN_UrunAdi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.URN_UrunAdi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.URN_Baslik)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.URN_Baslik)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.URN_UrunAciklama)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.URN_UrunAciklama)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.URN_ResimURL)
+        </dt>
+
+        <dd>
+            <img class="img-responsive" src="@Model.URN_ResimURL" alt="Logo" style="width:100px;height:auto;" />
+        </dd>
+
+       
+
+       
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color text-right">
+            <input type="submit" value="Ürünü Sil" class="btn btn-danger" /> 
+           
+        </div>
+        <div> @Html.ActionLink("Geri Dön", "Index")
+    </div>
+    }
+</div>

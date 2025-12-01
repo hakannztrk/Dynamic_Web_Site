@@ -1,0 +1,190 @@
+﻿@model IEnumerable<Dynamic_Web_Site.Models.Model.Kategori>
+
+@using Dynamic_Web_Site.Helper;
+@{
+    Layout = null;
+
+    // Alt kategorilerine göre sıralama yapıp, en fazla alt kategorisi olan 9 kategoriye ulaşmak ve sadece aktif olanları almak
+    var enCokAltKategoriOlanlar = Model
+        .Where(k => k.Status == "Open" && k.AltKategoris != null)
+        .OrderByDescending(k => k.AltKategoris.Count())
+        .Take(9)
+        .ToList();
+
+    // Alt kategoriler içinde yalnızca aktif olanları almak
+    foreach (var kategori in enCokAltKategoriOlanlar)
+    {
+        kategori.AltKategoris = kategori.AltKategoris.Where(a => a.Status == "Open").ToList();
+    }
+}
+
+
+<style>
+    /* Genel navbar ayarları */
+    .navbar-nav {
+        margin: 0;
+    }
+
+       
+
+    /* Kategori üzerine gelindiğinde tıklanabilir ama cursor değişmesin */
+    .nav-link {
+        pointer-events: auto;
+        cursor: pointer;
+    }
+
+    /* Dropdown menü varsayılan gizli */
+    .dropdown-menu {
+        z-index: 9999;
+        display: none;
+        position: absolute;
+        background-color: #f8f9fa;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        padding: 0;
+        min-width: 200px;
+        width: auto;
+        top: 30px !important;
+    }
+
+    /* Ana kategori üzerine gelindiğinde dropdown göster */
+    .navbar .nav-item:hover > .dropdown-menu {
+        display: block;
+    }
+
+    /* Dropdown toggle'ın sağındaki ok işaretini kaldır */
+    .nav-link.dropdown-toggle::after {
+        display: none;
+    }
+
+    /* Submenu temel stil */
+
+
+    .dropdown-submenu > .dropdown-menu {
+        top: 0 !important; /* Her zaman en üstten başlasın */
+        left: 100%; /* Ana menünün hemen sağında */
+        margin-top: 0 !important; /* Gereksiz boşlukları sıfırla */
+        margin-left: 0;
+        border-radius: 0 0.25rem 0.25rem 0;
+        white-space: nowrap;
+        overflow: hidden;
+        right: auto;
+        
+    }
+
+
+    /* Submenu üzerine gelindiğinde aç */
+    .dropdown-submenu:hover > .dropdown-menu {
+        display: block;
+    }
+
+    .dropdown-submenu {
+        position: relative;
+    }
+
+        .dropdown-submenu > .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 100%;
+            margin-top: 0;
+            border-radius: 0 0.25rem 0.25rem 0;
+            white-space: nowrap;
+            z-index: 10000; /* yüksek olmalı */
+        }
+
+    .dropdown-menu .dropdown-item:hover {
+        background-color: #1e4356; /* Dilerseniz başka bir renk de kullanabilirsiniz */
+        color: #ffffff; /* Yazı rengi siyah kalsın */
+    }
+   
+    a.nav-link,
+    a.nav-link.dropdown-toggle,
+    a.dropdown-item {
+        cursor: pointer !important;
+    }
+    .navbar-nav.ms-auto {
+        padding-right: 150px; 
+    }
+    .navbar-nav:first-child {
+        border-right: 2px solid #ddd;
+        padding-right: 20px;
+        margin-right: 30px;
+    }
+  
+   
+
+    
+
+    
+</style>
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <!-- Sol Menü: Sadece "Tüm Kategoriler" -->
+        <ul class="navbar-nav mb-2 mb-lg-0">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="/Urunler" id="navbarDropdownAllCategories" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="display:block">
+                    <strong>Tüm Kategoriler</strong>
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownAllCategories">
+                    @foreach (var kategori in enCokAltKategoriOlanlar)
+                    {
+                        if (kategori.AltKategoris != null && kategori.AltKategoris.Any())
+                        {
+                            <li class="dropdown-submenu">
+                                <a class="dropdown-item" href="/UrunKategori/@SeoHelper.ToSeoUrl(kategori.KTG_Adi).ToLower()/@kategori.KTG_Id">
+                                    @kategori.KTG_Adi
+                                </a>
+                                <ul class="dropdown-menu">
+                                    @foreach (var alt in kategori.AltKategoris)
+                                    {
+                                        <li><a class="dropdown-item" href="/UrunAltkategori/@SeoHelper.ToSeoUrl(alt.AKT_Adi).ToLower()/@alt.AKT_Id">@alt.AKT_Adi</a></li>
+                                    }
+                                </ul>
+                            </li>
+                        }
+                        else
+                        {
+                            <li><a class="dropdown-item" href="/UrunKategori/@SeoHelper.ToSeoUrl(kategori.KTG_Adi).ToLower()/@kategori.KTG_Id">@kategori.KTG_Adi</a></li>
+                        }
+                    }
+                </ul>
+            </li>
+        </ul>
+
+        <!-- Sağ Menü: Diğer kategoriler (sadece masaüstünde görünür) -->
+        <!-- Sağ Menü: Diğer kategoriler (sadece masaüstünde görünür) -->
+        <ul class="navbar-nav ms-auto kategori-sag mb-2 mb-lg-0 d-none d-lg-flex">
+
+            @foreach (var kategori in enCokAltKategoriOlanlar)
+            {
+                if (kategori.AltKategoris != null && kategori.AltKategoris.Any())
+                {
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="/UrunKategori/@SeoHelper.ToSeoUrl(kategori.KTG_Adi).ToLower()/@kategori.KTG_Id" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <strong>@kategori.KTG_Adi</strong>
+                        </a>
+                        <ul class="dropdown-menu">
+                            @foreach (var alt in kategori.AltKategoris)
+                            {
+                                <li><a class="dropdown-item" href="/UrunAltkategori/@SeoHelper.ToSeoUrl(alt.AKT_Adi).ToLower()/@alt.AKT_Id">@alt.AKT_Adi</a></li>
+                            }
+                        </ul>
+                    </li>
+                }
+                else
+                {
+                    <li class="nav-item">
+                        <a class="nav-link" href="/UrunKategori/@SeoHelper.ToSeoUrl(kategori.KTG_Adi).ToLower()/@kategori.KTG_Id">@kategori.KTG_Adi</a>
+                    </li>
+                }
+            }
+        </ul>
+    </div>
+</nav>
+
+
+
+
+

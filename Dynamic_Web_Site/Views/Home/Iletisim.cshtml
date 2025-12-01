@@ -1,0 +1,145 @@
+﻿@model Dynamic_Web_Site.Models.Model.Iletisim
+@{
+    ViewBag.Title = "Iletisim";
+    Layout = "~/Views/Shared/_SiteLayout.cshtml";
+}
+<style>
+    .form-box {
+        padding: 30px;
+        background: #fff;
+        box-shadow: 0px 0 30px rgba(0, 0, 0, 0.08);
+        border-radius: 8px;
+        margin-bottom: 20px;
+    }
+      
+
+        .form-box h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+    textarea[name="message"] {
+        resize: none;
+        height: 200px;
+    }
+</style>
+
+<main id="main">
+
+    <!-- ======= Contact Section ======= -->
+    <section class="breadcrumbs">
+        <div class="container">
+
+            <div class="d-flex justify-content-between align-items-center">
+                <h2>İletişim</h2>
+                <ol>
+                    <li><a href="/Anasayfa">Ana Sayfa</a></li>
+                    <li>İletişim</li>
+                </ol>
+            </div>
+
+        </div>
+    </section><!-- End Contact Section -->
+    <!-- ======= Contact Section ======= -->
+    <!-- ======= Contact Section ======= -->
+    <section class="contact" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
+        <div class="container">
+            <div class="row">
+                <!-- Left Side (Contact Info) -->
+                <div class="col-lg-6">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="info-box">
+                                <i class="bx bx-map"></i>
+                                <h3>Adres</h3>
+                                <p>@Model.ILT_Adres</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="info-box">
+                                <i class="bx bx-envelope"></i>
+                                <h3>E-Posta</h3>
+                                <p>@Model.ILT_Eposta</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="info-box">
+                                <i class="bx bx-phone-call"></i>
+                                <h3>İletişim No</h3>
+                                <p>@Model.ILT_Telefon</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="info-box">
+                                <i class="bx bx-printer"></i>
+                                <h3>Fax</h3>
+                                <p>@Model.ILT_Fax</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="info-box">
+                                <i class="bx bxl-whatsapp"></i>
+                                <h3>Whatsapp</h3>
+                                <p>@Model.ILT_Whatsapp</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Side (Contact Form) -->
+                <!-- Right Side (Contact Form) -->
+                <div class="col-lg-6">
+                    <div class="form-box">
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+                            <div class="form-horizontal" style="max-width: 500px;min-height:500px;">
+                                <div class="text-center mb-4">
+                                    <i class="bx bx-mail-send " style="font-size: 40px; color: #68a4c4; "></i>
+                                   
+                                    <h3 class="mt-2">Soru ve istekleriniz için bize ulaşın</h3>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-md-6 mb-3">
+                                        <input type="text" name="name" class="form-control" placeholder="Adınız" required minlength="4" />
+                                        <div class="invalid-feedback">Adınız en az 4 karakter içermelidir.</div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <input type="email" name="email" class="form-control" placeholder="E-Posta Adresiniz" required />
+                                        <div class="invalid-feedback">Lütfen geçerli bir e-posta adresi girin.</div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group mb-3">
+                                    <input type="text" name="subject" class="form-control" placeholder="Konu" required minlength="8" />
+                                    <div class="invalid-feedback">İçerik konunuz en az 8 karakter içermelidir.</div>
+                                </div>
+
+                                <div class="form-group mb-3">
+                                    <textarea name="message" class="form-control" rows="5" placeholder="Mesaj içeriği..." required></textarea>
+                                    <div class="invalid-feedback">Lütfen mesajınızı giriniz.</div>
+                                </div>
+
+                                <div class="form-group text-right">
+                                    <input type="submit" value="Gönder" class="btn btn-primary" />
+                                </div>
+                            </div> <!-- form-horizontal div kapanışı -->
+                        }  <!-- form kapanışı -->
+                    </div>  <!-- col-lg-6 kapanışı -->
+
+                </div>
+            </div>
+        </div>
+
+    </section><!-- End Contact Section -->
+        <!-- ======= Map Section ======= -->
+        <section class="map mt-2">
+            <div class="container-fluid p-0">
+                <iframe src="@Model.ILT_Konum" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+            </div>
+        </section><!-- End Map Section -->
+
+
+
+    </main>

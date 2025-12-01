@@ -1,0 +1,54 @@
+﻿@model Dynamic_Web_Site.Models.Model.AltKategori
+
+@{
+    ViewBag.Title = "ALt Kategori Kaldır";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<h3>Alt Kategoriyi silmek istediğinizden emin misiniz?</h3>
+<div>
+    <h4>AltKategori</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Kategori.KTG_Adi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kategori.KTG_Adi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AKT_Adi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AKT_Adi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AKT_Aciklama)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AKT_Aciklama)
+        </dd>
+
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color text-right">
+            <input type="submit" value="AltKategoriyi Sil" class="btn btn-danger" />
+
+        </div>
+        <div>
+            @Html.ActionLink("Geri Dön", "Index")
+        </div>
+    }
+</div>

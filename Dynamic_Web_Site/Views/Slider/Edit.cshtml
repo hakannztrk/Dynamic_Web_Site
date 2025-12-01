@@ -1,0 +1,69 @@
+﻿@model Dynamic_Web_Site.Models.Model.Slider
+
+@{
+    ViewBag.Title = "Slider Düzenle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h3>Slider Düzenle</h3>
+
+@using (Html.BeginForm("Edit", "Slider", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <h4>Slider</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.SLD_Id)
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.SLD_Baslik, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.SLD_Baslik, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.SLD_Baslik, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.SLD_Aciklama, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.SLD_Aciklama, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.SLD_Aciklama, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.SLD_ResimURL, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <input type="file" name="SLD_ResimURL" accept=".png,.jpg,.jpeg" class="form-control" />
+
+            @Html.ValidationMessageFor(model => model.SLD_ResimURL, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.Status, new List<SelectListItem>
+            {
+                new SelectListItem { Text = "Open", Value = "Open", Selected = Model.Status == "Open" },
+                new SelectListItem { Text = "Close", Value = "Close", Selected = Model.Status == "Close" }
+            }, "-Durum Seç-", new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10 text-right">
+            <input type="submit" value="Kaydet" class="btn btn-primary" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Geri Dön", "Index")
+</div>
+

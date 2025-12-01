@@ -1,0 +1,86 @@
+﻿@model IEnumerable<Dynamic_Web_Site.Models.Model.Kategori>
+
+@{
+    ViewBag.Title = "Kategoriler";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<script>
+    $(document).ready(function () {
+        $('#myTable').DataTable(
+            { "language": { "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Turkish.json" } }
+
+
+        );
+    });
+</script>
+<h3>Kategoriler</h3>
+
+<p>
+    @Html.ActionLink("Kategori Ekle", "Create", null, new { @class = "btn btn-primary" })
+</p>
+<table class="table" id="myTable">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.KTG_Adi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.KTG_Aciklama)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.KTG_Create_Date)
+            </th>
+
+
+            <th>İşlemler</th>
+        </tr>
+    </thead> 
+    <tbody>
+        @foreach (var item in Model)
+        {
+            if (item.Status == "Open")
+            {
+                <tr class="success">
+                    <td>
+                        @Html.DisplayFor(modelItem => item.KTG_Adi)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.KTG_Aciklama)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.KTG_Create_Date)
+                    </td>
+
+                    <td>
+                        @Html.ActionLink("Düzenle", "Edit", new { id = item.KTG_Id }, new { @class = "btn btn-warning" }) |
+
+                        @Html.ActionLink("Kategori Sil", "Delete", new { id = item.KTG_Id }, new { @class = "btn btn-danger" })
+                    </td>
+                </tr>
+            }
+            else
+            {
+                <tr class="danger">
+                    <td>
+                        @Html.DisplayFor(modelItem => item.KTG_Adi)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.KTG_Aciklama)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.KTG_Create_Date)
+                    </td>
+
+                    <td>
+                        @Html.ActionLink("Düzenle", "Edit", new { id = item.KTG_Id }, new { @class = "btn btn-warning" })
+
+
+                    </td>
+                </tr>
+            }
+
+
+        }
+    </tbody>
+</table>

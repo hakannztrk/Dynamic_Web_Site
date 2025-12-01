@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Dynamic_Web_Site.Models.Model.Admin>
+
+@{
+    ViewBag.Title = "AdminList";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h3>Adminler</h3>
+
+<p>
+    @Html.ActionLink("Admin Ekle", "Create",null,new { @class = "btn btn-primary btn-sm" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ADM_Eposta)
+        </th>
+       
+        <th>
+            @Html.DisplayNameFor(model => model.ADM_Yetki)
+        </th>
+        <th>İşlemler</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ADM_Eposta)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ADM_Yetki)
+        </td>
+        <td>
+            @Html.ActionLink("Şifre Güncelle", "Edit", new { id = item.ADM_Id }, new { @class = "btn btn-warning btn-sm" })  |
+            @Html.ActionLink("Admin Sil", "Delete", new { id = item.ADM_Id }, new { @class = "btn btn-danger btn-sm" }) 
+            @if (Session["yetki"].ToString() == "Admin")
+            {
+                   
+             @Html.ActionLink("Yetkilendir", "EditForYetki", new { id = item.ADM_Id }, new { @class = "btn btn-primary btn-sm" })
+            }
+
+        </td>
+    </tr>
+}
+
+</table>

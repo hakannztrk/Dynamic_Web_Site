@@ -1,0 +1,45 @@
+﻿@model Dynamic_Web_Site.Models.Model.Admin
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<h3>Admini silmek istediğinize emin misiniz?</h3>
+<div>
+    <h4>Admin</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ADM_Eposta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ADM_Eposta)
+        </dd>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ADM_Yetki)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ADM_Yetki)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color text-right">
+            <input type="submit" value="Admin Sil" class="btn btn-danger" />
+
+        </div>
+        <div>
+            @Html.ActionLink("Geri Dön", "AdminList")
+        </div>
+    }
+</div>

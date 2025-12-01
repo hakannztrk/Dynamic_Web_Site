@@ -1,0 +1,37 @@
+﻿@model IEnumerable<Dynamic_Web_Site.Models.Model.Hakkimizda>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@if (!Model.Any())
+{
+    <p>
+        @Html.ActionLink("Yeni Hakkımızda", "Create", null, new { @class = "btn btn-primary" })
+    </p>
+}
+
+
+<table class="table ">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.HKM_Aciklama)
+        </th>
+        <th>İşlemler</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.Raw(item.HKM_Aciklama)
+            </td>
+            <td>
+
+                <a href="/Hakkimizda/Edit/@item.HKM_Id" class="btn btn-primary  btn-sm">Düzenle</a>
+            </td>
+        </tr>
+    }
+
+</table>

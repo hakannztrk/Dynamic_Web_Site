@@ -1,0 +1,107 @@
+﻿@model IEnumerable<Dynamic_Web_Site.Models.Model.Slider>
+
+@{
+    ViewBag.Title = "Slider";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<script>
+    $(document).ready(function () {
+        $('#myTable').DataTable(
+            { "language": { "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Turkish.json" } }
+
+
+        );
+    });
+</script>
+<style>
+    .limited-cell {
+        max-width: 200px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: inline-block;
+    }
+</style>
+<h3>Sliders</h3>
+
+<p>
+    @Html.ActionLink("Yeni Slider", "Create", null, new { @class = "btn btn-primary" })
+</p>
+<table class="table" id="myTable">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.SLD_Baslik)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SLD_Aciklama)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SLD_ResimURL)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SLD_Create_Date)
+            </th>
+
+            <th>İşlemler</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            if (item.Status == "Open")
+            {
+                <tr class="success">
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SLD_Baslik)
+                    </td>
+                    <td>
+                        <span class="limited-cell" title="@item.SLD_Aciklama">
+                            @item.SLD_Aciklama
+                        </span>
+                    </td>
+                    <td>
+                        <img class="img-responsive" src="@item.SLD_ResimURL" alt="Logo" style="width:100px;height:auto;" />
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SLD_Create_Date)
+                    </td>
+
+                    <td>
+
+                        @Html.ActionLink("Düzenle", "Edit", new { id = item.SLD_Id }, new { @class = "btn btn-warning" }) |
+
+                        @Html.ActionLink("Slider Sil", "Delete", new { id = item.SLD_Id }, new { @class = "btn btn-danger" })
+
+                    </td>
+                </tr>
+            }
+            else
+            {
+                <tr class="danger">
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SLD_Baslik)
+                    </td>
+                    <td>
+                        <span class="limited-cell" title="@item.SLD_Aciklama">
+                            @item.SLD_Aciklama
+                        </span>
+                    </td>
+                    <td>
+                        <img class="img-responsive" src="@item.SLD_ResimURL" alt="Logo" style="width:100px;height:auto;" />
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SLD_Create_Date)
+                    </td>
+
+                    <td>
+                        @Html.ActionLink("Düzenle", "Edit", new { id = item.SLD_Id }, new { @class = "btn btn-warning" })
+
+
+                    </td>
+                </tr>
+            }
+
+        }
+    </tbody>
+</table>

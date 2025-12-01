@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Dynamic_Web_Site.Models.Model.Urun>
+@using Dynamic_Web_Site.Helper;
+@{ Layout = null; <h4 class="text-center mt-5">Aynı Kategorideki Diğer Ürünler</h4>
+    }
+    <div class="scrolling-wrapper d-flex overflow-auto py-3 px-2">
+        @foreach (var urun in Model)
+        {
+            if (urun.Status == "Open")
+            {
+        <div class="card mx-2 flex-shrink-0" style="width: 200px;">
+            @if (!string.IsNullOrEmpty(urun.URN_ResimURL))
+            {
+                <img src="@urun.URN_ResimURL" class="card-img-top w-100" style="height: 200px; object-fit: contain; background-color: #f0f0f0;" alt="@urun.URN_UrunAdi">
+
+            }
+            <div class="card-body" style="height: 200px; overflow: hidden;">
+                <hr />
+                <h5 class="card-title text-center">@urun.URN_UrunAdi.ToUpper()</h5>
+                <h6 class="card-subtitle mb-2 text-muted">@urun.URN_Baslik</h6>
+
+                <div class="d-flex justify-content-end">
+                    <a href="/Urunler/@SeoHelper.ToSeoUrl(urun.URN_Baslik).ToLower()/@urun.URN_Id" class="btn btn-outline-primary btn-sm">Ürüne Git</a>
+                </div>
+            </div>
+        </div>
+            }
+        }
+    </div>
+
+    <style>
+        .scrolling-wrapper {
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+        }
+
+            .scrolling-wrapper .card {
+                scroll-snap-align: start;
+            }
+    </style>

@@ -1,0 +1,64 @@
+﻿@model Dynamic_Web_Site.Models.Model.Admin
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h3>Admin Düzenle</h3>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Admin</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.ADM_Id)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ADM_Eposta, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.ADM_Eposta, new { htmlAttributes = new { @class = "form-control", } })
+                @Html.HiddenFor(model => model.ADM_Eposta)
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ADM_Password, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+
+                @Html.PasswordFor(model => model.ADM_Password, new { htmlAttributes = new { @class = "form-control", @type = "password" } })
+                @Html.ValidationMessageFor(model => model.ADM_Password, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        @Html.HiddenFor(model => model.ADM_Yetki)
+
+
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10 text-right">
+                <input type="submit" value="Güncelle" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+@if (Session["yetki"] != null)
+{
+    if (Session["yetki"].ToString() == "Admin")
+    {
+        <div>
+            @Html.ActionLink("Geri Dön", "AdminList")
+        </div>
+    }
+    else
+    { @Html.ActionLink("Geri Dön", "Index")
+}
+}
+else
+{ @Html.ActionLink("Geri Dön", "Index")
+}
+

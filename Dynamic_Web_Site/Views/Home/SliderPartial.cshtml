@@ -1,0 +1,43 @@
+﻿@model IEnumerable<Dynamic_Web_Site.Models.Model.Slider>
+
+@{
+   
+    Layout = null;
+}
+<section id="hero" class="d-flex justify-content-center align-items-center">
+    <div id="heroCarousel" class="container carousel carousel-fade" data-ride="carousel">
+
+        @{
+            var index = 0;
+        }
+
+        @foreach (var item in Model)
+        {
+            var activeClass = index == 0 ? "active" : "";
+
+            <div class="carousel-item @activeClass">
+                <div class="carousel-container text-white p-4 d-flex align-items-center">
+                    <!-- Görseli img etiketi ile ekliyoruz -->
+                    <img src="@item.SLD_ResimURL" alt="@item.SLD_Baslik" class="carousel-img mr-4">
+
+                    <!-- Metin kısmı -->
+                    <div class="carousel-text">
+                        <h2 class="animate__animated animate__fadeInDown"><span>@item.SLD_Baslik</span></h2>
+                        <p class="animate__animated animate__fadeInUp">@item.SLD_Aciklama</p>
+                    </div>
+                </div>
+            </div>
+            index++;
+        }
+
+        <a class="carousel-control-prev" href="#heroCarousel" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon bx bx-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+
+        <a class="carousel-control-next" href="#heroCarousel" role="button" data-slide="next">
+            <span class="carousel-control-next-icon bx bx-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+</section>

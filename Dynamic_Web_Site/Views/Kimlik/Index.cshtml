@@ -1,0 +1,69 @@
+﻿@model IEnumerable<Dynamic_Web_Site.Models.Model.Kimlik>
+
+@{
+    ViewBag.Title = "Kimlik";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<h3>Site Kimlik</h3>
+
+@if (!Model.Any())
+{
+    <p>
+        @Html.ActionLink("Yeni Kimlik", "Create", null, new { @class = "btn btn-primary" })
+    </p>
+}
+
+<table class="table table-bordered ">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.KMK_Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.KMK_Keywords)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.KMK_Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.KMK_LogoURL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.KMK_Unvan)
+        </th>
+        <th>İşlemler</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.KMK_Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.KMK_Keywords)
+            </td>
+            <td>
+                @Html.Raw(item.KMK_Description)
+            </td>
+            <td>
+
+                <img class="img-responsive" src="@item.KMK_LogoURL" alt="Logo" style="width:100px;height:auto;" />
+
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.KMK_Unvan)
+            </td>
+            <td>
+                @Html.ActionLink("Güncelle", "Edit", new { id = item.KMK_Id }, new { @class = "btn btn-primary btn-sm" })
+
+            </td>
+
+
+        </tr>
+    }
+
+</table>
+
